@@ -1,9 +1,9 @@
 # Specifications for the Sinatra Assessment
 
 Specs:
-- [x] Use Sinatra to build the app
-- [ ] Use ActiveRecord for storing information in a database
-- [ ] Include more than one model class (e.g. User, Post, Category)
+- [x] Use Sinatra to build the app - used Corneal to create file structure for project and implement sinatra and necessary gems to have a working app.
+- [x] Use ActiveRecord for storing information in a database create migrations using rake and migrating to database via db/migrate directory.
+- [x] Include more than one model class (e.g. User, Post, Category)- User, Cat, Breed
 - [ ] Include at least one has_many relationship on your User model (e.g. User has_many Posts)
 - [ ] Include at least one belongs_to relationship on another model (e.g. Post belongs_to User)
 - [ ] Include user accounts with unique login attribute (username or email)
