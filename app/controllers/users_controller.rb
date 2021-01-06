@@ -12,9 +12,12 @@ class UsersController < ApplicationController
         if user.username.empty? || user.password.empty?
           @error = "Username or password can't be blank. Please try again."
           erb :"users/signup"
+        elsif User.find_by(username: user.username) #no two usernames can be the same
+          @error = "Username is already taken. Please use a different username"
+          erb :"users/signup"
         else
           user.save
-          session[:id] = user.id #this line basically logs a user into website by matching the session[id] value to the user.id value and establish the session between server and user
+          session[:user_id] = user.id #this line basically logs a user into website by matching the session[user_id] value to the user.id value and establish the session/cookie between server and user
           redirect "/cats"
         end
     end

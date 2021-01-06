@@ -6,6 +6,7 @@ end
 
 
 use Rack::MethodOverride
+use SessionsController
 use CatsController
 use UsersController
 run ApplicationController
