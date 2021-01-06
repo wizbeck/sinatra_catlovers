@@ -5,10 +5,16 @@
     <li>Age: <%=@cat.age %></li>
     <li>Personality: <%=@cat.personality %></li>
   </ul>
+  <%if @cat.user%>
+    <p> Owner: <%=@cat.user.username %> </p>
+    <% end %>
   <!--if user currently logged in created this cat: show edit link and delete link -->
-  <a href="/cats/<%=@cat.id%>/edit">Edit Traits</a>
-  <br>
-  <form action="/cats/<%=@cat.id %>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button type="submit">Delete Cat</button>
+  <% if current_user == @cat.user%>
+      <a href="/cats/<%=@cat.id%>/edit">Edit Traits</a>
+      <br>
+      <form action="/cats/<%=@cat.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit">Delete Cat</button>
+      </form>
+  <% end %>
   <br>

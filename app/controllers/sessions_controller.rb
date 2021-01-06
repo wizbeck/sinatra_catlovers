@@ -26,7 +26,8 @@ end
  #then redirect them to the welcome page to log in
 
 get "/logout" do
-  sessions.clear
-  binding.pry
+  session.clear
   redirect "/"
+end
+
 end

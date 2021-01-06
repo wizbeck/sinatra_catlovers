@@ -3,18 +3,21 @@ class CatsController < ApplicationController
 
     #show - read all
     get "/cats" do
+        redirect_if_not_logged_in
         @cats = Cat.all.reverse
         erb :'cats/index'
     end
 
     #new - get request to new erb form for user to fill out and submit
     get "/cats/new" do
+        redirect_if_not_logged_in
         erb :"cats/new"
     end
 
     
     #read single object- show
     get "/cats/:id" do
+        redirect_if_not_logged_in
         @cat = Cat.find(params[:id])
         erb :"cats/show"
     end
@@ -22,7 +25,7 @@ class CatsController < ApplicationController
     #create
     #persist new cat to database, and redirect to individual show page with validations
     post "/cats" do
-        @cat = Cat.new(params)
+        @cat = current_user.cats.build(params)
         if !@cat.name.blank? && !@cat.age.blank? && !@cat.personality.blank? #use blank? for if someone uses whitespace, and for integers such as age
             @cat.save
             #take user to cat show page
@@ -41,6 +44,7 @@ class CatsController < ApplicationController
     #with the values already filled out for them to change
 
     get "/cats/:id/edit" do
+        redirect_if_not_logged_in
         @cat = Cat.find(params[:id])
         erb :"cats/edit"
     end

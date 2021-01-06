@@ -17,20 +17,19 @@ class ApplicationController < Sinatra::Base
   
   helpers do
     
-    def redirect_if_not_logged_in
+    def redirect_if_not_logged_in #if a user is not logged in, they will be redirected to login page to login and access website
       if !logged_in?
-        redirect to #error login page
+        redirect to "/login" #helper method to refactor repetitive code. protect user data?
       end
     end
 
     def logged_in?
-      !!session[:user_id]
+      !!current_user
     end
 
-    def current_user
-      User.find(session[:user_id])
+    def current_user #help with keeping code dry
+     User.find_by(id: session[:user_id])
     end
-
 
   end
 

@@ -5,3 +5,9 @@
 -build controller actions and views simultaneously based on data passed.
 -set up user functionality, sign up(sessions/cookies), log in, log out.
 -set up user only able to edit their own posts and not other users
+-build user authentication
+add user authorization(be able to see certain data)
+
+
+-users who aren't logged in have limited access
+-user who ARE logged in have more access but cannot edit or delete other peoples content.
