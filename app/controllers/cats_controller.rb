@@ -3,6 +3,7 @@ class CatsController < ApplicationController
 
     #show - read all
     get "/cats" do
+        binding.pry
         @cats = Cat.all.reverse
         erb :'cats/index'
     end
