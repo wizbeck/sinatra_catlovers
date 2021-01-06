@@ -1,1 +1,19 @@
-<form action="/cats/:id" method="post"></form>
+<h1> Edit Cat Attributes for <%= @cat.name%></h1>
+<p><%= @error%></p>
+
+<form action="/cats/<%=@cat.id%>" method="post">
+<input type="hidden" name="_method" value="patch" />
+
+<label>Name of Cat:</label><br>
+<input type="text" name="cat[name]" value="<%=@cat.name %>" > <br>
+<br>
+<label>Age:</label><br>
+<input type="text" name="cat[age]" value="<%=@cat.age %>"><br>
+<br>
+<label>Personality:</label><br>
+<input type="text" name="cat[personality]" value="<%=@cat.personality %>"><br>
+<br>
+
+<input type="submit" value="Update" />
+
+</form>

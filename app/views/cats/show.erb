@@ -1,8 +1,11 @@
 <h1><%=@cat.name%></h1>
 
-<h2> Traits: </h2>
+<h3> Traits: </h3>
   <ul>
     <li>Age: <%=@cat.age %></li>
-    <li>Personality:<%=@cat.personality %></li>
-    <li>Breed: </li> <!--this will be breed functionality between users and cats /!-->
+    <li>Personality: <%=@cat.personality %></li>
   </ul>
+  <a href="/cats/<%=@cat.id%>/edit">Edit Traits</a>
+  <br>
+  <br>
+  <a href="/cats">All Cats</a>
