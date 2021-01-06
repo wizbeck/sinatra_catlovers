@@ -59,12 +59,12 @@ class CatsController < ApplicationController
         
     end
 
-
 #DELETE/destroy- create a delete button, as a form disguised in a show page or read page
 #   create a delete HTTP request to delete from database
-    delete "cats/:id" do
-        @cat = Cat.find(:id)
+    delete "/cats/:id" do
+        @cat = Cat.find(params[:id])
         @cat.destroy
+        redirect "/cats"
     end
     
 end
