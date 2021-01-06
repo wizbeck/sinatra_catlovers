@@ -1,37 +1,44 @@
 class CatsController < ApplicationController
 
+    before do # helper method to help not repeat and keep to DRY code
+        redirect_if_not_logged_in
+    end
 
     #show - read all
     get "/cats" do
-        redirect_if_not_logged_in
         @cats = Cat.all.reverse
         erb :'cats/index'
     end
+    #show - read all cats that belong to the user currently logged in
 
+    get "/cats/:username" do
+        erb :"/cats/usercats"
+    end
     #new - get request to new erb form for user to fill out and submit
     get "/cats/new" do
-        redirect_if_not_logged_in
         erb :"cats/new"
     end
 
     
     #read single object- show
     get "/cats/:id" do
-        redirect_if_not_logged_in
-        @cat = Cat.find(params[:id])
-        erb :"cats/show"
+        @cat = Cat.find_by(id: params[:id])
+        if @cat
+            erb :"cats/show"
+        else 
+            redirect "/cats"
+        end
     end
 
     #create
     #persist new cat to database, and redirect to individual show page with validations
     post "/cats" do
         @cat = current_user.cats.build(params)
-        if !@cat.name.blank? && !@cat.age.blank? && !@cat.personality.blank? #use blank? for if someone uses whitespace, and for integers such as age
-            @cat.save
+            if @cat.save
             #take user to cat show page
             redirect  "/cats"
         else 
-            @error = "Data Invalid, Please try again."
+            @error = "Cat must have a name and age. Please try again."
             erb :"cats/new"
             #rerender the form
         end
@@ -44,7 +51,6 @@ class CatsController < ApplicationController
     #with the values already filled out for them to change
 
     get "/cats/:id/edit" do
-        redirect_if_not_logged_in
         @cat = Cat.find(params[:id])
         erb :"cats/edit"
     end
@@ -53,11 +59,11 @@ class CatsController < ApplicationController
     #put or patch- post request to change values of existing object in database
     patch "/cats/:id" do
         @cat = Cat.find(params[:id])
-        if !params["cat"]["name"].blank? && !params["cat"]["age"].blank? && !params["cat"]["personality"].blank? #using cat key pointing to hash of param values for easier integration with users
+        if !params["cat"]["name"].blank? && !params["cat"]["age"].blank? #using cat key pointing to hash of param values for easier integration with users
             @cat.update(params["cat"])
             redirect "/cats/#{@cat.id}"
         else
-            @error = "Data invalid. Please try again"
+            @error = "Cat must have a name and age. Please try again."
             erb :"/cats/edit"
         end
         

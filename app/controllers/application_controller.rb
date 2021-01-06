@@ -13,13 +13,12 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-
   
   helpers do
     
     def redirect_if_not_logged_in #if a user is not logged in, they will be redirected to login page to login and access website
       if !logged_in?
-        redirect to "/login" #helper method to refactor repetitive code. protect user data?
+        redirect to "/login" #refactoring code to use less repeition in controllers
       end
     end
 
