@@ -1,27 +1,25 @@
 class CatsController < ApplicationController
 
-    before do # helper method to help not repeat and keep to DRY code
-        redirect_if_not_logged_in
-    end
+    
 
     #show - read all
     get "/cats" do
+        redirect_if_not_logged_in
         @cats = Cat.all.reverse
         erb :'cats/index'
     end
-    #show - read all cats that belong to the user currently logged in
 
-    get "/cats/:username" do
-        erb :"/cats/usercats"
-    end
     #new - get request to new erb form for user to fill out and submit
     get "/cats/new" do
+        redirect_if_not_logged_in
+        @breeds = Breed.all
         erb :"cats/new"
     end
 
     
     #read single object- show
     get "/cats/:id" do
+        redirect_if_not_logged_in
         @cat = Cat.find_by(id: params[:id])
         if @cat
             erb :"cats/show"
@@ -51,6 +49,7 @@ class CatsController < ApplicationController
     #with the values already filled out for them to change
 
     get "/cats/:id/edit" do
+        redirect_if_not_logged_in
         @cat = Cat.find(params[:id])
         erb :"cats/edit"
     end

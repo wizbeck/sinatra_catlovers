@@ -17,7 +17,6 @@
     <div>
       <div><a href="/">Home</a></div> 
       <%if logged_in?%>    
-      <div><a href="/cats/<%=current_user.username%>">My Cats</a></div>
       <div><a href="/cats">All Cats</a></div>
       <div><a href="/logout">Log Out</a><div>
       <%else%>

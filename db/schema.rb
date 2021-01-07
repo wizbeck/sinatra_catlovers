@@ -17,16 +17,16 @@ ActiveRecord::Schema.define(version: 20210106221212) do
     t.string "name"
   end
 
+  create_table "breeds_cats", id: false, force: :cascade do |t|
+    t.integer "cat_id"
+    t.integer "breed_id"
+  end
+
   create_table "cats", force: :cascade do |t|
     t.string  "name"
     t.integer "age"
     t.string  "personality"
     t.integer "user_id"
-  end
-
-  create_table "cats_breeds", force: :cascade do |t|
-    t.integer "cat_id"
-    t.integer "breed_id"
   end
 
   create_table "users", force: :cascade do |t|
