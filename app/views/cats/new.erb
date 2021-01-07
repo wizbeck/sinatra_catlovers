@@ -10,11 +10,12 @@
 <label>Personality:</label><br>
 <input type="text" name="personality"><br>
 <br>
-
-<label>Choose a Breed or create one if it doesn't exist</label>
-<% @breeds.each do |breed|%>
-<input type="checkbox" name="breed[name]" value= "<%= breed.id %>"><%= breed.name%>
-<% end %>
+<label>Breed:</label><br>
+<input type="text" name="breed"><br>
+<br>
+<label>Color:</label><br>
+<input type="text" name="color"><br>
+<br>
 
 <input type="submit" value="Create" />
 </form>

@@ -13,19 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20210106221212) do
 
-  create_table "breeds", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "breeds_cats", id: false, force: :cascade do |t|
-    t.integer "cat_id"
-    t.integer "breed_id"
-  end
-
   create_table "cats", force: :cascade do |t|
     t.string  "name"
     t.integer "age"
     t.string  "personality"
+    t.string  "breed"
+    t.string  "color"
+    t.string  "fur_type"
     t.integer "user_id"
   end
 

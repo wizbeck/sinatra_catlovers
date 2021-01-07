@@ -12,7 +12,6 @@ class CatsController < ApplicationController
     #new - get request to new erb form for user to fill out and submit
     get "/cats/new" do
         redirect_if_not_logged_in
-        @breeds = Breed.all
         erb :"cats/new"
     end
 

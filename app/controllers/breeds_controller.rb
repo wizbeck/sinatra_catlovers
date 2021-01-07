@@ -1,3 +1,0 @@
-class BreedsController < ApplicationController
-
-end
