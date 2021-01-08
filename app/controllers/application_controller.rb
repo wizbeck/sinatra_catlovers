@@ -13,7 +13,12 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  
+
+  not_found do
+    status 404
+    erb :"/oops"
+  end
+
   helpers do
     
     def redirect_if_not_logged_in #if a user is not logged in, they will be redirected to login page to login and access website
