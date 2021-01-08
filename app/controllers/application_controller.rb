@@ -30,6 +30,14 @@ class ApplicationController < Sinatra::Base
      User.find_by(id: session[:user_id])
     end
 
+    def kill_user_and_user_cats
+      @cats = Cat.where(user_id: session[:user_id])
+      @cats.each {|cat| cat.destroy }
+      @user = User.find_by(id: session[:user_id])
+      @user.destroy
+      session.clear
+    end
+
   end
 
 end

@@ -15,7 +15,13 @@ class CatsController < ApplicationController
         erb :"cats/new"
     end
 
-    
+        #read only cats that were created by the current user
+    get '/cats/users/:id' do
+        redirect_if_not_logged_in
+        @users_cats = current_user.cats
+        erb :'/cats/userscats'
+    end
+
     #read single object- show
     get "/cats/:id" do
         redirect_if_not_logged_in

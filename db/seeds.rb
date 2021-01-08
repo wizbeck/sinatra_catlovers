@@ -11,4 +11,4 @@ user.cats.create(name:"Test cat", age: 34, personality: "none")
 user.cats.create(name:"unknown", age: 4, personality: "scaredy cat")
 user.cats.create(name:"Garfield", age: 25, personality: "selfish")
 
-puts "There should now be 5 or more test cats and 5 breeds in the database with a test user"
+puts "There should now be 5 or more test cats with attributes and a test user to interact with the web app"

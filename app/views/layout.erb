@@ -16,9 +16,12 @@
   <body>
     <div>
       <div><a href="/">Home</a></div> 
-      <%if logged_in?%>    
-      <div><a href="/cats">All Cats</a></div>
+      <%if logged_in?%>
+      <div><a href="/cats">All Cats</a></div>    
+      <div><a href="/cats/users/<%=current_user.id%>">My Cats</a></div>
+      <div><a href="/options/users/<%=current_user.id%>">Account</a></div>
       <div><a href="/logout">Log Out</a><div>
+      
       <%else%>
         <div><a href="/login">Log In</a></div>
         <div><a href="/signup">Sign Up</a></div>

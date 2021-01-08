@@ -23,9 +23,19 @@ class UsersController < ApplicationController
         end
       end
     end
-
-
-
+    #show page to render user account settings
+    get "/options/users/:id" do
+      redirect_if_not_logged_in
+      erb :'users/account_options'
+    end
     #users can delete account
+    #we want to delete all cats associated with the user who wishes to delete their account
+    #then we want to delete all cats that they 'created'
+    delete "/delete_user" do
+        redirect_if_not_logged_in
+        kill_user_and_user_cats
+        redirect "/"
+    end
 
+    
 end
