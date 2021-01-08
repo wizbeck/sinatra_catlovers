@@ -15,7 +15,7 @@ class CatsController < ApplicationController
         erb :"cats/new"
     end
 
-        #read only cats that were created by the current user
+    #read only cats that were created by the current logged in user
     get '/cats/users/:id' do
         redirect_if_not_logged_in
         @users_cats = current_user.cats
@@ -38,10 +38,10 @@ class CatsController < ApplicationController
     post "/cats" do
         @cat = current_user.cats.build(params)
             if @cat.save
-            #take user to cat show page
+            #take user to all cats show page to see their post as the most recent at top
             redirect  "/cats"
         else 
-            @error = "Cat must have a name and age. Please try again."
+            @error = "Cat must have at least a name and age. Please try again."
             erb :"cats/new"
             #rerender the form
         end
