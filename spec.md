@@ -11,10 +11,10 @@ Specs:
 - [x] Ensure that users can't modify content created by other users- only users that are logged in can access the information and can only edit the information they created through conditions by hiding links to edit routes whether or not they created the specific content they view.
 - [x] Include user input validations - used built in #validates method from ActiveRecord::Base inheritance on both User and Cat class
 - [x] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new) - some error functionality with logging in signing up and creating a new Cat object via the form in cats/new.erb
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code -see README.md
 
 Confirm
 - [x] You have a large number of small Git commits - made commits as often as I remembered to, after building out meaningful progress to the project
 - [x] Your commit messages are meaningful - I made commits after minor changes to the project to utilize commit message 
-- [x] You made the changes in a commit that relate to the commit message - 
-- [x] You don't include changes in a commit that aren't related to the commit message - making commits early and often to make a brief and meaningful commit message for progress on project
+- [x] You made the changes in a commit that relate to the commit message - tried my best to only commit certain files that related to my commit messages
+- [x] You don't include changes in a commit that aren't related to the commit message - making commits early and often to make a brief and meaningful commit message for progress towards project requirements
