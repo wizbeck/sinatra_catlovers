@@ -8,14 +8,17 @@ end
 post "/login" do
   if params["username"].empty? || params["password"].empty?
     @error = "Username or password can't be blank. Please try again."
-    erb :"users/login"
+    erb :"/users/login"
+  elsif User.find_by(username: params[:username]) == nil
+    @error = "Username does not exist. Please try again"
+    erb :"/users/login"
   else
     user = User.find_by(username: params[:username])
       if user && user.authenticate(params["password"])
       session[:user_id] = user.id
       redirect "/cats"
     else
-      @error = "Account not found. Try again."
+      @error = "Username or password invalid. Try again."
       erb :"/users/login"
     end
   end
