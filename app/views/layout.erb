@@ -7,26 +7,27 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-    <title>CrazyCatLovers</title>
+    <title>Crazy Cat Lovers</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet"  href="/stylesheets/main.css" />
   </head>
+
   <body>
-    <div>
-      <div><a href="/">Home</a></div> 
+    <div class="pagebar">
+        <a href="/">Home</a> 
       <%if logged_in?%>
-      <div><a href="/cats">All Cats</a></div>    
-      <div><a href="/cats/users/<%=current_user.id%>">My Cats</a></div>
-      <div><a href="/options/users/<%=current_user.id%>">Account</a></div>
-      <div><a href="/logout">Log Out</a><div>
-      
+        <a href="/cats">All Cats</a>    
+        <a href="/cats/users/<%=current_user.id%>">My Cats</a>
+        <a href="/options/users/<%=current_user.id%>">Account</a>
+        <a href="/logout">Log Out</a>
       <%else%>
-        <div><a href="/login">Log In</a></div>
-        <div><a href="/signup">Sign Up</a></div>
+        <a href="/login">Log In</a>
+        <a href="/signup">Sign Up</a>
       <%end%>
     </div>
+
     <div class="wrapper">
 
         <%= yield %>
@@ -34,6 +35,7 @@
       <footer>
         <small>&copy; 2021 <strong>Crazy Cat Lovers</strong></small>
       </footer>
+
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
