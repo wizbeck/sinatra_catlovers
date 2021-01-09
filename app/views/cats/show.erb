@@ -8,9 +8,11 @@
     <li>Color: <%=@cat.color %></li>
     <li>Fur Type: <%=@cat.fur_type %></li>
   </ul>
+  <br>
   <%if @cat.user%>
-    <p> Owner: <%=@cat.user.username %> </p>
+    <p> Owner: <em><%=@cat.user.username %></em> </p>
     <% end %>
+    <br>
   <!--if user currently logged in created this cat: show edit link and delete link -->
   <% if current_user == @cat.user%>
       <a href="/cats/<%=@cat.id%>/edit">Edit Traits</a>
