@@ -36,14 +36,19 @@ class CatsController < ApplicationController
     #create
     #persist new cat to database, and redirect to individual show page with validations
     post "/cats" do
-        @cat = current_user.cats.build(params)
-            if @cat.save
-            #take user to all cats show page to see their post as the most recent at top
-            redirect  "/cats"
-        else 
-            @error = "Cat must have at least a name and age. Please try again."
+        if !params["age"].is_a? Integer
+            @error = "Cat's age must be a whole number. Please try again."
             erb :"cats/new"
-            #rerender the form
+        else
+            @cat = current_user.cats.build(params)
+                if @cat.save
+                    #take user to all cats show page to see their post as the most recent at top
+                    redirect  "/cats"
+                else 
+                    @error = "Cat must have at least a name and age. Please try again."
+                    erb :"cats/new"
+                    #rerender the form
+                end
         end
     end
         
