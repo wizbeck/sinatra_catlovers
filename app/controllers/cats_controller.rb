@@ -2,7 +2,7 @@ class CatsController < ApplicationController
 
     
 
-    #show - read all
+    #index - read all
     get "/cats" do
         redirect_if_not_logged_in
         @cats = Cat.all.reverse
@@ -15,7 +15,7 @@ class CatsController < ApplicationController
         erb :"cats/new"
     end
 
-    #read only cats that were created by the current logged in user
+    #read/show only cats(objects) that were created by the current logged in user
     get '/cats/users/:id' do
         redirect_if_not_logged_in
         @users_cats = current_user.cats
@@ -36,11 +36,11 @@ class CatsController < ApplicationController
     #create
     #persist new cat to database, and redirect to individual show page with validations
     post "/cats" do
-        @cat = current_user.cats.build(params)
-        if !@cat.age.is_a? Integer
+        if !age_valid?
             @error = "Cat's age must be a whole number. Please try again."
             erb :"cats/new"
         else
+            @cat = current_user.cats.build(params)
             if @cat.save
                 #take user to all cats show page to see their post as the most recent at top
                 redirect  "/cats"
@@ -67,12 +67,13 @@ class CatsController < ApplicationController
     #update
     #put or patch- post request to change values of existing object in database
     patch "/cats/:id" do
+        #binding.pry
         @cat = Cat.find(params[:id])
-        if !params["cat"]["name"].blank? && !params["cat"]["age"].blank? #using cat key pointing to hash of param values for easier integration with users
+        if !params["cat"]["name"].blank? && !params["cat"]["age"].blank? && age_edit_valid? #using cat key pointing to hash of param values for easier integration with users
             @cat.update(params["cat"])
             redirect "/cats/#{@cat.id}"
         else
-            @error = "Cat must have a name and age. Please try again."
+            @error = "Cat must have at least a name and valid age. Please try again."
             erb :"/cats/edit"
         end
         

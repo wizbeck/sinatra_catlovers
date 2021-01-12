@@ -43,6 +43,15 @@ class ApplicationController < Sinatra::Base
       session.clear
     end
 
+    def age_valid?
+      params[:age] !~ /\D/
+    end
+    
+    def age_edit_valid?
+      params["cat"]["age"] !~ /\D/
+    end
+
+
   end
 
 end
