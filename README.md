@@ -5,10 +5,19 @@ This web app manages content between users, allowing them to add their cats to a
 
 ## Prerequisites
 BEFORE RUNNING ANY OF THE BELOW COMMANDS:
-DONT FORGET TO RUN bundle install
+```ruby
+  $ bundle install
+```
 
 When forking the project, make sure to run these commands in the terminal: 
-rake db:migrate 
-rake db:seed 
+```ruby 
+  $ rake db:migrate 
+  $ rake db:seed 
+```
+Then execute:
+```ruby
+  $ shotgun
+```
+This should launch the app onto a localhost port, (default is localhost:9393, but yours may vary.)
 
-Then use shotgun in the terminal and navigate to your localhost:(portnumber)
+If everything was installed properly
