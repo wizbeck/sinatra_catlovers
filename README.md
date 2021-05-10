@@ -22,6 +22,4 @@ This should launch the app onto a localhost port, (default is localhost:9393, bu
 
 If everything was installed properly you should see something like this in your terminal:
 
-![alt text][logo]
-
-[logo]:  https://gyazo.com/3bb2960b0669bd897143c49a8281ba03 "shotgun up"
+![shotgun](https://gyazo.com/3bb2960b0669bd897143c49a8281ba03)
