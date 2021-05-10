@@ -18,7 +18,6 @@ class UsersController < ApplicationController
           redirect "/cats"
         else
           @error= "Username or password invalid. Please try again."
-          #basic message for now until we figure out messages with validations
           erb :'users/signup'
         end
       end

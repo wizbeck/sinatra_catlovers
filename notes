@@ -22,3 +22,6 @@ render and error page when a random nonexistant route is entered into the websit
   -navigation bar
   -colors
   -formatting
+
+  create a route that sorts all cats by age
+  create a button/link that takes you to that route

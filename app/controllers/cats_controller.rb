@@ -22,6 +22,16 @@ class CatsController < ApplicationController
         erb :'/cats/userscats'
     end
 
+    #show cats, sorted by age
+
+    get "/cats/by_age" do
+        redirect_if_not_logged_in
+        @cats = Cat.all.sort_by(&:age)
+        erb :'/cats/catsbyage'
+
+    end
+
+
     #read single object- show
     get "/cats/:id" do
         redirect_if_not_logged_in
@@ -67,7 +77,6 @@ class CatsController < ApplicationController
     #update
     #put or patch- post request to change values of existing object in database
     patch "/cats/:id" do
-        #binding.pry
         @cat = Cat.find(params[:id])
         if !params["cat"]["name"].blank? && !params["cat"]["age"].blank? && age_edit_valid? #using cat key pointing to hash of param values for easier integration with users
             @cat.update(params["cat"])
