@@ -35,6 +35,8 @@ If everything was installed properly you should see something like this in your 
 ```
 You can then navigate to the link that's given on your terminal and experience the Crazy Cat Lover's user experience.
 
+You can check out a demo video of the project [here](https://www.youtube.com/watch?v=t0WGgbgzwRc&ab_channel=WesleyBeck).
+
 ### Contact
 
 If you have any questions or inquiries you can reach me at beck.wes21@gmail.com.
